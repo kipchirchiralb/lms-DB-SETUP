@@ -66,4 +66,22 @@ INSERT INTO resources(resource_id, course_id, title, resource_type, resource_url
 -- 1. Insert THREE new students into the students table.
 -- 2. Update the email address of ONE student in the students table.
 -- 3. ENROLL TWO STUDENTS INTO THE INTRODUCTION TO PROGRAMMING COURSE.
---- 4. DESIGN A DATABASE FOR YOUR CAPTSTONE PROJECT. CREATE TABLES, DEFINE RELATIONSHIPS, AND PERFORM CRUD OPERATIONS TO MANAGE YOUR DATA EFFECTIVELY.
+
+INSERT INTO students(student_id, full_name, email, password, phone_number) VALUES
+(4545, 'Alice Johnson', 'alice@eldohub.com', 'passwokjhvjklrd123', '0725551234'),
+(4546, 'Bob Smith', 'bob@eldohub.com', 'passwokjhvjklrd123', '0725551235'),
+(4547, 'Charlie Brown', 'charlie@eldohub.com', 'passwokjhvjklrd123', '0725551236');
+
+INSERT into enrollments(enrollment_id, student_id, course_id, enrollment_date) VALUES
+(301, 4545, 112, '2024-06-01'),
+(302, 4546, 112, '2024-06-02'),
+(303, 4547, 113, '2024-06-03');
+
+
+-- Select students enrolled to data structures course
+SELECT s.full_name, s.email FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+WHERE e.course_id = 113;
+
+
+--- 4. DESIGN A DATABASE FOR YOUR CAPTSTONE PROJECT. CREATE TABLES, DEFINE RELATIONSHIPS, AND PERFORM CRUD OPERATIONS TO MANAGE YOUR DATA EFFECTIVELY. - HAVE ATLEAST TEN RECORD PER TABLE
