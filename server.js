@@ -9,7 +9,7 @@ const dbconn = mysql.createConnection({
   password: "tendamema",
   database: "lms",
 });
-// the app intself / routes / paths / endpoints 
+// the app intself / routes / paths / endpoints
 app.get("/students", (req, res) => {
   dbconn.query("SELECT * FROM students", (err, results) => {
     if (err) {
@@ -20,6 +20,25 @@ app.get("/students", (req, res) => {
     }
   });
 });
+app.get("/newstudent", (req, res) => {
+  res.render("newstudent.ejs");
+});
+app.post("/newstudent", express.urlencoded({ extended: true }), (req, res) => {
+  // insert new student data recieved from a html form into the database and redirect to /students
+
+  console.log(req.body);
+
+  const insertSatement = `INSERT INTO students(student_id,full_name,email,password,phone_number) VALUES( ${req.body.id}, "${req.body.fullname}", "${req.body.email}","${req.body.pasword}","${req.body.phone}")`;
+
+  dbconn.query(insertSatement, (err) => {
+    if (err) {
+      res.status(500).send("Server Error - related to the databse:" + err);
+    } else {
+      res.redirect("/students");
+    }
+  });
+});
+
 app.get("/courses", (req, res) => {
   dbconn.query("SELECT * FROM courses", (err, results) => {
     if (err) {
@@ -39,13 +58,6 @@ app.get("/enrollments", (req, res) => {
     }
   });
 });
-
-    
-
-
-
-
-
 
 // running the app
 app.listen(3000, () => {

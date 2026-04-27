@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>New Student</title>
+  </head>
+  <body>
+    <h1>Register new student</h1>
+    <form action="/newstudent" method="post">
+      <div>
+        <label for="id">Student ID</label>
+        <input type="number" name="id" id="id" min="100" max="999" />
+      </div>
+      <div>
+        <label for="fullname">Full Name</label>
+        <input type="text" name="fullname" id="fullname" />
+      </div>
+      <div>
+        <label for="email">Email </label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div>
+        <label for="password">Password </label>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div>
+        <label for="confirmpassword">Confirm Password </label>
+        <input
+          type="confirmpassword"
+          name="confirmpassword"
+          id="confirmpassword"
+        />
+      </div>
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="text" name="phone" id="phone" placeholder="+2547....." />
+      </div>
+      <input type="submit" value="+ Add Student" />
+    </form>
+  </body>
+</html>
